@@ -1,10 +1,9 @@
 import React, { Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth, ProtectedRoute } from "@/features/auth";
 import Login from "@/components/Login";
 import SelecaoPerfil from "@/components/SelecaoPerfil";
 import Layout from "@/components/Layout";
-import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import LoadingTransition from "@/components/ui/loading-transition";
 import PageTransition from "@/components/ui/page-transition";
 import ScrollToTop from "@/components/ScrollToTop";

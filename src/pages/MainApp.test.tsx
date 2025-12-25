@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import MainApp from './MainApp';
 import { AuthProvider } from '../contexts/AuthContext';
 
@@ -11,11 +11,11 @@ jest.mock('../contexts/AuthContext', () => {
 });
 
 test('renderiza Login quando não autenticado', () => {
-  render(
+  const { getByRole } = render(
     <AuthProvider>
       <MainApp />
     </AuthProvider>
   );
-  const button = screen.getByRole('button', { name: /entrar/i });
+  const button = getByRole('button', { name: /entrar/i });
   (expect(button) as any).toBeInTheDocument();
-}); 
+});
