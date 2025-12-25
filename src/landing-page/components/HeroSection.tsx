@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Trophy, ArrowRight } from 'phosphor-react';
+import { Link } from 'react-router-dom';
 
 interface HeroSectionProps {
   onCtaClick: () => void;
@@ -53,9 +54,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onCtaClick }) => {
             <Button
               variant="outline"
               size="lg"
+              asChild
               className="text-lg px-8 py-6 border-2 border-gray-300 hover:border-purple-500 hover:text-purple-600 transition-all duration-300"
-            >
-              Saiba Mais
+           >
+              <Link to="/login">Ir para login</Link>
             </Button>
           </div>
 
