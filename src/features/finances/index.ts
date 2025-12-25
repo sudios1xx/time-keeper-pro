@@ -1,4 +1,4 @@
-export { default as Financas } from "@/components/admin/Financas";
+export { default as Financas } from "@/features/finances/components/AdminFinancesPage";
 
 
 
