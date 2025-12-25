@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import DashboardAdmin from './DashboardAdmin';
+import DashboardAdmin from '@/features/admin/components/AdminDashboardPage';
 
 test('renderiza dashboard do administrador', () => {
   const { getByText } = render(<DashboardAdmin />);
-  (expect(getByText(/dashboard/i)) as any).toBeInTheDocument();
+  (expect(getByText(/gestão do time/i)) as any).toBeInTheDocument();
 });

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import Login from '../components/Login';
 import SelecaoPerfil from '../components/SelecaoPerfil';
-import DashboardAdmin from '../components/admin/DashboardAdmin';
+import DashboardAdmin from '@/features/admin/components/AdminDashboardPage';
 import DashboardJogador from '../components/player/DashboardJogador';
 import LoadingSpinner from '../components/ui/loading-spinner';
 import { logger } from '../utils/logger';
