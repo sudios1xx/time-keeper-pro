@@ -44,7 +44,7 @@ const SelecaoPerfil: React.FC = () => {
         'Confirmar presença em jogos',
         'RSVP para eventos',
         'Acompanhar estatísticas pessoais',
-        'Sistema de troféus e medalhas'
+        'Ver agenda completa do time'
       ],
       cor: 'from-green-500 to-green-600',
       delay: '150ms'
@@ -132,10 +132,7 @@ const SelecaoPerfil: React.FC = () => {
               <ChartBar className="w-4 h-4 mr-2" />
               <span>Estatísticas Detalhadas</span>
             </div>
-            <div className="flex items-center">
-              <Trophy className="w-4 h-4 mr-2" />
-              <span>Sistema de Conquistas</span>
-            </div>
+            {/* Slot reservado para futuros destaques do jogador */}
           </div>
         </div>
       </div>

@@ -7,11 +7,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { 
   PencilSimple, 
   Trash, 
-  Trophy, 
   Calendar,
   TrendUp,
-  User,
-  Star
+  User
 } from 'phosphor-react';
 import { Jogador } from '../../types';
 import { confirmAction } from '../../utils/toast-helpers';
@@ -106,10 +104,6 @@ const PlayerCard: React.FC<PlayerCardProps> = React.memo(({
               <TrendUp className="w-4 h-4 mr-1" />
               {jogador.percentualPresenca}% presença
             </span>
-            <span className="flex items-center">
-              <Trophy className="w-4 h-4 mr-1 text-yellow-500" />
-              {jogador.trofeus.length} troféus
-            </span>
           </div>
         </CardContent>
       </Card>
@@ -180,43 +174,7 @@ const PlayerCard: React.FC<PlayerCardProps> = React.memo(({
                 </p>
               </div>
 
-              {/* Troféus e Medalhas */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Trophy className="w-5 h-5 text-yellow-600" />
-                    <span className="text-sm font-medium text-gray-700">Troféus</span>
-                  </div>
-                  <p className="text-xl font-semibold text-gray-900">{jogador.trofeus.length}</p>
-                  {jogador.trofeus.length > 0 && (
-                    <div className="mt-3 space-y-1">
-                      {jogador.trofeus.slice(0, 3).map((trofeu) => (
-                        <div key={trofeu.id} className="text-xs text-gray-600 flex items-center space-x-1">
-                          <span>{trofeu.icone}</span>
-                          <span>{trofeu.nome}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Star className="w-5 h-5 text-purple-600" />
-                    <span className="text-sm font-medium text-gray-700">Medalhas</span>
-                  </div>
-                  <p className="text-xl font-semibold text-gray-900">{jogador.medalhas.length}</p>
-                  {jogador.medalhas.length > 0 && (
-                    <div className="mt-3 space-y-1">
-                      {jogador.medalhas.slice(0, 3).map((medalha) => (
-                        <div key={medalha.id} className="text-xs text-gray-600">
-                          <span>{medalha.nome}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
+              {/* Espaço reservado para futuros destaques do jogador (ex: conquistas) */}
             </div>
 
             {/* Ações */}
