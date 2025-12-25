@@ -10,14 +10,14 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 // Lazy loaded feature screens
 const DashboardAdmin = React.lazy(() => import("@/features/admin/components/AdminDashboardPage"));
-const DashboardJogador = React.lazy(() => import("@/components/player/DashboardJogador"));
+const DashboardJogador = React.lazy(() => import("@/features/profile/components/PlayerDashboardPage"));
 const GestaoJogadores = React.lazy(() => import("@/features/players/components/AdminPlayersPage"));
 const GestaoJogos = React.lazy(() => import("@/features/games/components/AdminGamesPage"));
 const GestaoEventos = React.lazy(() => import("@/features/events/components/AdminEventsPage"));
 const Financas = React.lazy(() => import("@/features/finances/components/AdminFinancesPage"));
 const Configuracoes = React.lazy(() => import("@/features/admin/components/AdminSettingsPage"));
-const JogosJogador = React.lazy(() => import("@/components/player/JogosJogador"));
-const EventosJogador = React.lazy(() => import("@/components/player/EventosJogador"));
+const JogosJogador = React.lazy(() => import("@/features/games/components/PlayerGamesPage"));
+const EventosJogador = React.lazy(() => import("@/features/events/components/PlayerEventsPage"));
 import LandingPage from "@/landing-page/LandingPage";
 
 const PageLoading = ({ text }: { text: string }) => (

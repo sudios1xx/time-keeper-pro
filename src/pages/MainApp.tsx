@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import Login from '../components/Login';
 import SelecaoPerfil from '../components/SelecaoPerfil';
 import DashboardAdmin from '@/features/admin/components/AdminDashboardPage';
-import DashboardJogador from '../components/player/DashboardJogador';
+import DashboardJogador from '@/features/profile/components/PlayerDashboardPage';
 import LoadingSpinner from '../components/ui/loading-spinner';
 import { logger } from '../utils/logger';
 
