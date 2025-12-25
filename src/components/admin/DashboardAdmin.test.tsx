@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import DashboardAdmin from './DashboardAdmin';
 
 test('renderiza dashboard do administrador', () => {
-  render(<DashboardAdmin />);
-  (expect(screen.getByText(/dashboard/i)) as any).toBeInTheDocument();
+  const { getByText } = render(<DashboardAdmin />);
+  (expect(getByText(/dashboard/i)) as any).toBeInTheDocument();
 });
