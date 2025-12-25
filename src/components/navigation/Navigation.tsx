@@ -35,8 +35,8 @@ const Navigation: React.FC = () => {
   ];
 
   const menuJogador = [
-    { id: '/jogador', label: 'Início', icon: House },
     { id: '/jogador/jogos', label: 'Jogos', icon: SoccerBall },
+    { id: '/jogador', label: 'Início', icon: House },
     { id: '/jogador/eventos', label: 'Eventos', icon: Calendar },
   ];
 
