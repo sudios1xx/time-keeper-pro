@@ -202,7 +202,9 @@ const Navigation: React.FC = () => {
           const IconComponent = item.icon;
           const isActive = isActiveRoute(item.id);
           const isDisabled = (item as any).disabled;
-          const isAdminHome = usuario?.tipo === 'administrador' && item.id === '/admin';
+          const isHome =
+            (usuario?.tipo === 'administrador' && item.id === '/admin') ||
+            (usuario?.tipo === 'jogador' && item.id === '/jogador');
           
           return (
             <button
@@ -212,7 +214,7 @@ const Navigation: React.FC = () => {
               className={`relative flex flex-col items-center justify-center flex-1 h-full transition-all duration-150 ${
                 isDisabled
                   ? 'text-gray-400 cursor-not-allowed opacity-50'
-                  : isAdminHome
+                  : isHome
                     ? 'text-white'
                     : isActive
                       ? 'text-primary'
@@ -221,7 +223,7 @@ const Navigation: React.FC = () => {
               style={{ minWidth: 0 }}
               title={isDisabled ? 'Funcionalidade em desenvolvimento' : ''}
             >
-              {isAdminHome ? (
+              {isHome ? (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r from-[#4C1D95] to-[#3B82F6] shadow-xl ring-4 ring-white flex items-center justify-center transition-transform duration-150 ${
                     isActive ? 'scale-105' : 'hover:scale-105 active:scale-95'
@@ -233,14 +235,14 @@ const Navigation: React.FC = () => {
                 <IconComponent className="w-6 h-6 mb-0.5" />
               )}
 
-              {isAdminHome ? (
+              {isHome ? (
                 <span className="sr-only">{item.label}</span>
               ) : (
                 <span className="text-xs font-semibold leading-tight">{item.label}</span>
               )}
 
               {/* indicator */}
-              {!isDisabled && !isAdminHome && (
+              {!isDisabled && !isHome && (
                 <span className={`mt-1 h-1 w-6 rounded-full transition-all duration-150 ${
                   isActive ? 'bg-primary' : 'bg-transparent'
                 }`} />
