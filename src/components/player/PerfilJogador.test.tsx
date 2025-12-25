@@ -8,5 +8,5 @@ test('renderiza perfil do jogador', () => {
       <PerfilJogador />
     </AuthProvider>
   );
-  (expect(getByText(/conquistas recentes/i)) as any).toBeInTheDocument();
+  (expect(getByText(/nome do jogador/i)) as any).toBeInTheDocument();
 });
