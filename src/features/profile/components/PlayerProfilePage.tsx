@@ -1,30 +1,13 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Trophy, Medal, User, SignOut, PencilSimple, Calendar } from "phosphor-react";
+import { User, SignOut, PencilSimple, Calendar } from "phosphor-react";
 import { useAuth } from "@/contexts/AuthContext";
 import PageHeader from "@/components/common/PageHeader";
-
-const conquistas = [
-  {
-    tipo: "Troféu",
-    nome: "Artilheiro",
-    data: "14/06/2024",
-    icone: <Trophy className="w-5 h-5 text-yellow-500" />,
-  },
-  {
-    tipo: "Medalha",
-    nome: "Presença VIP",
-    data: "09/07/2024",
-    icone: <Medal className="w-5 h-5 text-purple-500" />,
-  },
-];
 
 const estatisticas = [
   { label: "Jogos", valor: 32, icon: Calendar, color: "blue" },
   { label: "Eventos", valor: 12, icon: Calendar, color: "info" },
-  { label: "Conquistas", valor: 5, icon: Trophy, color: "warning" },
 ];
 
 const PlayerProfilePage: React.FC = () => {
@@ -66,26 +49,6 @@ const PlayerProfilePage: React.FC = () => {
             <Button size="sm" variant="outline" className="flex items-center gap-1">
               <PencilSimple className="w-4 h-4" /> Editar Perfil
             </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Conquistas */}
-      <Card className="shadow-card">
-        <CardContent className="p-4 sm:p-6">
-          <h3 className="text-base font-semibold mb-3 text-[#1E293B] flex items-center gap-2">
-            <Trophy className="w-5 h-5 text-yellow-500" /> Conquistas Recentes
-          </h3>
-          <div className="flex flex-wrap gap-2">
-            {conquistas.map((c, i) => (
-              <Badge
-                key={i}
-                className="flex items-center gap-1 px-3 py-1 text-xs bg-primary/10 text-primary font-medium rounded-full"
-              >
-                {c.icone} {c.nome}
-                <span className="ml-1 text-muted-foreground">({c.data})</span>
-              </Badge>
-            ))}
           </div>
         </CardContent>
       </Card>
