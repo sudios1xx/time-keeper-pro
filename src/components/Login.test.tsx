@@ -9,5 +9,5 @@ test('renderiza o botão de entrar', () => {
     </AuthProvider>
   );
   const button = screen.getByRole('button', { name: /entrar/i });
-  expect(button).toBeInTheDocument();
+  (expect(button) as any).toBeInTheDocument();
 }); 

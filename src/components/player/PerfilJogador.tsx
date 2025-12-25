@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../../components/ui/button';
 import { Badge } from '../../components/ui/badge';
 import { Card, CardContent } from '../../components/ui/card';
-import { Trophy, Medal, User, Envelope, SignOut, PencilSimple, Calendar } from 'phosphor-react';
+import { Trophy, Medal, User, SignOut, PencilSimple, Calendar } from 'phosphor-react';
 import { useAuth } from '../../contexts/AuthContext';
 import PageHeader from '../common/PageHeader';
 

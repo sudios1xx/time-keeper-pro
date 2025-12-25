@@ -10,7 +10,7 @@ import { showToast } from '../../utils/toast-helpers';
 import PageHeader from '../common/PageHeader';
 
 const Configuracoes: React.FC = () => {
-  const { usuario, logout } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const [nomeTime, setNomeTime] = useState('Jogo em Foco');
 

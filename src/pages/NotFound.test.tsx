@@ -8,6 +8,6 @@ test('renderiza página 404', () => {
       <NotFound />
     </MemoryRouter>
   );
-  expect(screen.getByText(/404/i)).toBeInTheDocument();
-  expect(screen.getByText(/page not found/i)).toBeInTheDocument();
+  (expect(screen.getByText(/404/i)) as any).toBeInTheDocument();
+  (expect(screen.getByText(/page not found/i)) as any).toBeInTheDocument();
 }); 

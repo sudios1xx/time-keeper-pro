@@ -141,7 +141,7 @@ const EventosJogador: React.FC = () => {
 
       {/* Lista de Eventos */}
       <div className="grid gap-2 sm:gap-4">
-        {eventosFiltrados.map((evento, index) => {
+        {eventosFiltrados.map((evento) => {
           const minhaPresenca = jogadorData ? evento.presencas.find(p => p.jogadorId === jogadorData.id) : undefined;
           const confirmei = minhaPresenca?.confirmou;
           const isProximo = isEventoProximo(evento.data);

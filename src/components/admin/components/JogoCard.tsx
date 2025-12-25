@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent } from '../../ui/card';
 import { Badge } from '../../ui/badge';
 import { Button } from '../../ui/button';
-import { Calendar, CheckCircle, Clock, Lightning, MapPin, PencilSimple, Target, Trash, Users } from 'phosphor-react';
+import { Clock, Lightning, MapPin, PencilSimple, Target, Trash, Users } from 'phosphor-react';
 import { getStatusIcon } from '../../../constants/mappings';
 import { Jogo } from '../../../types';
 import { showToast } from '../../../utils/toast-helpers';

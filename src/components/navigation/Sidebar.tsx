@@ -7,7 +7,6 @@ import {
   Users,
   SoccerBall,
   Calendar,
-  Chats,
   User,
   SignOut,
   Bell,
@@ -15,7 +14,7 @@ import {
   Trophy,
   CurrencyDollarSimple
 } from 'phosphor-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '../ui/dialog';
 import { Badge } from '../ui/badge';
 import { Card, CardContent } from '../ui/card';
 import { PencilSimple, Medal } from 'phosphor-react';
@@ -53,7 +52,7 @@ const Sidebar: React.FC = () => {
         {menuItems.map((item) => {
           const IconComponent = item.icon;
           const isActive = isActiveRoute(item.id);
-          const isDisabled = item.disabled;
+          const isDisabled = (item as any).disabled;
           const isAdminHome = usuario?.tipo === 'administrador' && item.id === '/admin';
           
           return (
