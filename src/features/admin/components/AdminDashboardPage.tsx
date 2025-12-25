@@ -79,7 +79,9 @@ const DashboardAdmin: React.FC = () => {
             subtitle="Notificação"
             icon={Bell}
             bgClassName="bg-gray-200/50"
-            disabled
+            onClick={() =>
+              showToast.info('Em breve: envio de notificações para jogadores e responsáveis.')
+            }
           />
         </div>
       </section>

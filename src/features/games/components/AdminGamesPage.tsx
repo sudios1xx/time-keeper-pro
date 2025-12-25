@@ -16,6 +16,8 @@ import { data } from '@/services/data';
 const GestaoJogos: React.FC = () => {
   const [filterStatus, setFilterStatus] = useState('todos');
   const [isAgendarJogoOpen, setIsAgendarJogoOpen] = useState(false);
+  const [isEditarJogoOpen, setIsEditarJogoOpen] = useState(false);
+  const [jogoEmEdicao, setJogoEmEdicao] = useState<Jogo | null>(null);
   const [jogos, setJogos] = useState<Jogo[]>([]);
   const [novoJogo, setNovoJogo] = useState({
     adversario: '',
@@ -121,13 +123,64 @@ const GestaoJogos: React.FC = () => {
   };
 
   const handleEditarJogo = (jogo: Jogo) => {
-    logger.log('Editar jogo:', jogo);
-    showToast.info(`Editando jogo vs ${jogo.adversario}`);
+    setJogoEmEdicao(jogo);
+    setIsEditarJogoOpen(true);
+  };
+
+  const handleSalvarEdicaoJogo = () => {
+    if (!jogoEmEdicao) return;
+
+    if (!validateRequired(jogoEmEdicao.adversario)) {
+      showToast.error('Por favor, preencha o adversário');
+      return;
+    }
+
+    if (!validateName(jogoEmEdicao.adversario)) {
+      showToast.error('Nome do adversário deve ter entre 2 e 50 caracteres');
+      return;
+    }
+
+    if (!validateRequired(jogoEmEdicao.data)) {
+      showToast.error('Por favor, preencha a data');
+      return;
+    }
+
+    if (!validateFutureDate(jogoEmEdicao.data)) {
+      showToast.error('A data do jogo deve ser futura');
+      return;
+    }
+
+    if (!validateRequired(jogoEmEdicao.horario)) {
+      showToast.error('Por favor, preencha o horário');
+      return;
+    }
+
+    if (!validateRequired(jogoEmEdicao.local)) {
+      showToast.error('Por favor, preencha o local');
+      return;
+    }
+
+    logger.log('Jogo editado:', jogoEmEdicao);
+    const next = jogos.map((j) => (j.id === jogoEmEdicao.id ? jogoEmEdicao : j));
+    setJogos(next);
+    void data.setGames(next);
+
+    setIsEditarJogoOpen(false);
+    setJogoEmEdicao(null);
+    showToast.success('Jogo editado com sucesso!');
+  };
+
+  const handleCancelarEdicaoJogo = () => {
+    setIsEditarJogoOpen(false);
+    setJogoEmEdicao(null);
   };
 
   const handleExcluirJogo = async (jogo: Jogo) => {
     await confirmAction(`Tem certeza que deseja excluir o jogo vs ${jogo.adversario}?`, async () => {
       logger.log('Excluindo jogo:', jogo);
+      const next = jogos.filter((j) => j.id !== jogo.id);
+      setJogos(next);
+      void data.setGames(next);
       showToast.success(`Jogo vs ${jogo.adversario} excluído com sucesso!`);
     });
   };
@@ -315,6 +368,24 @@ const GestaoJogos: React.FC = () => {
         confirmLabel="Agendar Jogo"
       >
         <JogoForm value={novoJogo as JogoFormState} onChange={(v) => setNovoJogo(v)} />
+      </ModalFormLayout>
+
+      <ModalFormLayout
+        open={isEditarJogoOpen}
+        onOpenChange={setIsEditarJogoOpen}
+        icon={Trophy}
+        title="Editar Jogo"
+        description="Atualize as informações do jogo"
+        onCancel={handleCancelarEdicaoJogo}
+        onConfirm={handleSalvarEdicaoJogo}
+        confirmLabel="Salvar Alterações"
+      >
+        {jogoEmEdicao && (
+          <JogoForm
+            value={jogoEmEdicao as unknown as JogoFormState}
+            onChange={(v) => setJogoEmEdicao(v as unknown as Jogo)}
+          />
+        )}
       </ModalFormLayout>
     </div>
   );
