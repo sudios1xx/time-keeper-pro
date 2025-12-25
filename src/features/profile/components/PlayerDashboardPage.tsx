@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { SoccerBall, Trophy, TrendUp, Medal, Star, Calendar } from "phosphor-react";
+import { SoccerBall, Trophy, TrendUp, Calendar } from "phosphor-react";
 import { useNavigation } from "@/hooks/use-navigation";
 import PageHeader from "@/components/common/PageHeader";
 import UpcomingItemCard from "@/components/admin/components/UpcomingItemCard";
@@ -57,18 +56,6 @@ const PlayerDashboardPage: React.FC = () => {
           valor: `${jogadorData.percentualPresenca}%`,
           icon: TrendUp,
           color: "warning",
-        },
-        {
-          label: "Troféus",
-          valor: jogadorData.trofeus.length,
-          icon: Trophy,
-          color: "blue",
-        },
-        {
-          label: "Medalhas",
-          valor: jogadorData.medalhas.length,
-          icon: Medal,
-          color: "purple",
         },
         {
           label: "Próximos Jogos",
@@ -176,55 +163,6 @@ const PlayerDashboardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Conquistas */}
-      <section className="mt-6">
-        <h2 className="text-lg font-semibold text-[#1E293B] mb-3">
-          Conquistas
-        </h2>
-        <h3 className="text-base font-semibold text-[#1E293B] mb-2">
-          Troféus Recentes
-        </h3>
-        <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4">
-          {jogadorData?.trofeus.slice(0, 4).map((trofeu) => (
-            <Card key={trofeu.id} className="gradient-card shadow-card">
-              <CardContent className="p-3 sm:p-4 flex flex-col items-center">
-                <Star className="w-6 h-6 text-[#4C1D95] mb-2" />
-                <span className="font-bold text-[#1E293B] text-sm sm:text-base text-center">
-                  {trofeu.nome}
-                </span>
-                <span className="text-xs text-muted-foreground mt-1">
-                  {new Date(trofeu.dataConquista).toLocaleDateString("pt-BR")}
-                </span>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <h3 className="text-base font-semibold text-[#1E293B] mb-2">
-          Medalhas
-        </h3>
-        <div className="space-y-2 sm:space-y-3 mb-4">
-          {jogadorData?.medalhas.slice(0, 3).map((medalha) => (
-            <Card key={medalha.id} className="gradient-card shadow-card">
-              <CardContent className="p-3 sm:p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Medal className="w-6 h-6 text-[#4C1D95]" />
-                  <div>
-                    <span className="font-bold text-[#1E293B] text-sm sm:text-base block">
-                      {medalha.nome}
-                    </span>
-                    <p className="text-xs text-muted-foreground">
-                      {medalha.descricao}
-                    </p>
-                  </div>
-                </div>
-                <Badge className="bg-[#4C1D95] text-white rounded-full px-3 py-0.5 text-xs">
-                  {medalha.tipo}
-                </Badge>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
     </div>
   );
 };
