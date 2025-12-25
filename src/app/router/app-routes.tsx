@@ -9,13 +9,13 @@ import PageTransition from "@/components/ui/page-transition";
 import ScrollToTop from "@/components/ScrollToTop";
 
 // Lazy loaded feature screens
-const DashboardAdmin = React.lazy(() => import("@/components/admin/DashboardAdmin"));
+const DashboardAdmin = React.lazy(() => import("@/features/admin/components/AdminDashboardPage"));
 const DashboardJogador = React.lazy(() => import("@/components/player/DashboardJogador"));
-const GestaoJogadores = React.lazy(() => import("@/components/admin/GestaoJogadores"));
-const GestaoJogos = React.lazy(() => import("@/components/admin/GestaoJogos"));
-const GestaoEventos = React.lazy(() => import("@/components/admin/GestaoEventos"));
-const Financas = React.lazy(() => import("@/components/admin/Financas"));
-const Configuracoes = React.lazy(() => import("@/components/admin/Configuracoes"));
+const GestaoJogadores = React.lazy(() => import("@/features/players/components/AdminPlayersPage"));
+const GestaoJogos = React.lazy(() => import("@/features/games/components/AdminGamesPage"));
+const GestaoEventos = React.lazy(() => import("@/features/events/components/AdminEventsPage"));
+const Financas = React.lazy(() => import("@/features/finances/components/AdminFinancesPage"));
+const Configuracoes = React.lazy(() => import("@/features/admin/components/AdminSettingsPage"));
 const JogosJogador = React.lazy(() => import("@/components/player/JogosJogador"));
 const EventosJogador = React.lazy(() => import("@/components/player/EventosJogador"));
 import LandingPage from "@/landing-page/LandingPage";

@@ -153,6 +153,9 @@ const GestaoEventos: React.FC = () => {
   const handleExcluirEvento = async (evento: Evento) => {
     await confirmAction(`Tem certeza que deseja excluir o evento "${evento.nome}"?`, async () => {
       logger.log('Excluindo evento:', evento);
+      const next = eventos.filter((e) => e.id !== evento.id);
+      setEventos(next);
+      void data.setEvents(next);
       showToast.success(`Evento "${evento.nome}" excluído com sucesso!`);
     });
   };
@@ -195,6 +198,9 @@ const GestaoEventos: React.FC = () => {
     }
 
     logger.log('Evento editado:', eventoEmEdicao);
+    const next = eventos.map((e) => (e.id === eventoEmEdicao.id ? eventoEmEdicao : e));
+    setEventos(next);
+    void data.setEvents(next);
     setIsEditarEventoOpen(false);
     setEventoEmEdicao(null);
     showToast.success('Evento editado com sucesso!');
