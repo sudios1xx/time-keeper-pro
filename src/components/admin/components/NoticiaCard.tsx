@@ -22,9 +22,12 @@ const formatarData = (data: string) => {
   return dataNoticia.toLocaleDateString('pt-BR');
 };
 
-const NoticiaCard: React.FC<NoticiaCardProps> = React.memo(({ noticia, index }) => {
+const NoticiaCardComponent: React.FC<NoticiaCardProps> = ({ noticia, index }) => {
   return (
-    <Card className="bg-white rounded-xl border sm:shadow-card shadow-none card-hover animate-scale-in overflow-hidden" style={{ animationDelay: `${index * 50}ms` }}>
+    <Card
+      className="bg-white rounded-xl border sm:shadow-card shadow-none card-hover animate-scale-in overflow-hidden"
+      style={{ animationDelay: `${index * 50}ms` }}
+    >
       <CardContent className="p-0">
         <div className="p-4 sm:p-6 space-y-4">
           <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-0">
@@ -132,6 +135,8 @@ const NoticiaCard: React.FC<NoticiaCardProps> = React.memo(({ noticia, index }) 
     </Card>
   );
 };
+
+const NoticiaCard = React.memo(NoticiaCardComponent);
 
 NoticiaCard.displayName = 'NoticiaCard';
 
