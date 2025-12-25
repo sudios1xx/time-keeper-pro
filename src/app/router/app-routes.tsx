@@ -18,7 +18,7 @@ const Financas = React.lazy(() => import("@/features/finances/components/AdminFi
 const Configuracoes = React.lazy(() => import("@/features/admin/components/AdminSettingsPage"));
 const JogosJogador = React.lazy(() => import("@/features/games/components/PlayerGamesPage"));
 const EventosJogador = React.lazy(() => import("@/features/events/components/PlayerEventsPage"));
-import LandingPage from "@/landing-page/LandingPage";
+
 
 const PageLoading = ({ text }: { text: string }) => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -136,17 +136,11 @@ const AppRoutes = () => {
     <>
       <ScrollToTop />
       <Routes>
-        {/* Rota /beta sempre acessível */}
-        <Route path="/beta" element={
-          <Suspense fallback={<PageLoading text="Carregando..." />}>
-            <LandingPage />
-          </Suspense>
-        } />
-        
+        {/* Rotas públicas sem landing page */}
         {!usuario ? (
           <>
             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-            <Route path="*" element={<Navigate to="/beta" replace />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
           </>
         ) : !perfilSelecionado ? (
           <>
@@ -178,6 +172,7 @@ const AppRoutes = () => {
             }
           />
         )}
+
       </Routes>
     </>
   );

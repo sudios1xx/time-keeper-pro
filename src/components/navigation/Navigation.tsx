@@ -11,12 +11,10 @@ import {
   SignOut,
   User,
   PencilSimple,
-  Medal,
   CurrencyDollarSimple
 } from 'phosphor-react';
 import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '../ui/dialog';
-import { Badge } from '../ui/badge';
 import { Card, CardContent } from '../ui/card';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigation } from '../../hooks/use-navigation';
@@ -127,8 +125,8 @@ const Navigation: React.FC = () => {
                       
                       <div className="flex-1 overflow-y-auto px-6 py-4">
                         <div className="space-y-6">
-                          {/* Estatísticas */}
-                          <div className="grid grid-cols-3 gap-4">
+                          {/* Estatísticas rápidas */}
+                          <div className="grid grid-cols-2 gap-4">
                             <Card className="gradient-card shadow-card">
                               <CardContent className="p-4 text-center">
                                 <p className="text-2xl font-bold text-primary">32</p>
@@ -139,12 +137,6 @@ const Navigation: React.FC = () => {
                               <CardContent className="p-4 text-center">
                                 <p className="text-2xl font-bold text-primary">12</p>
                                 <p className="text-xs text-muted-foreground">Eventos</p>
-                              </CardContent>
-                            </Card>
-                            <Card className="gradient-card shadow-card">
-                              <CardContent className="p-4 text-center">
-                                <p className="text-2xl font-bold text-primary">5</p>
-                                <p className="text-xs text-muted-foreground">Conquistas</p>
                               </CardContent>
                             </Card>
                           </div>
@@ -171,22 +163,7 @@ const Navigation: React.FC = () => {
                             </CardContent>
                           </Card>
                             
-                          {/* Conquistas */}
-                          <Card className="shadow-card">
-                            <CardContent className="p-4 sm:p-6">
-                              <h3 className="text-base font-semibold mb-3 text-[#1E293B] flex items-center gap-2">
-                                <Trophy className="w-5 h-5 text-yellow-500" /> Conquistas Recentes
-                              </h3>
-                              <div className="flex flex-wrap gap-2">
-                                <Badge className="flex items-center gap-1 px-3 py-1 text-xs bg-primary/10 text-primary font-medium rounded-full">
-                                  <Trophy className="w-4 h-4 text-yellow-500" /> Artilheiro <span className="ml-1 text-muted-foreground">(14/06/2024)</span>
-                                </Badge>
-                                <Badge className="flex items-center gap-1 px-3 py-1 text-xs bg-primary/10 text-primary font-medium rounded-full">
-                                  <Medal className="w-4 h-4 text-purple-500" /> Presença VIP <span className="ml-1 text-muted-foreground">(09/07/2024)</span>
-                                </Badge>
-                              </div>
-                            </CardContent>
-                          </Card>
+                          {/* Espaço reservado para futuros destaques (ex: conquistas) */}
                         </div>
                       </div>
                       
