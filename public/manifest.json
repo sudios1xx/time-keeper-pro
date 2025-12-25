@@ -1,0 +1,140 @@
+{
+  "id": "/",
+  "name": "Time Manager - Gestão de Futebol",
+  "short_name": "Time Manager",
+  "description": "Sistema completo de gestão para times de futebol com funcionalidades para administradores e jogadores.",
+  "start_url": "/",
+  "dir": "ltr",
+  "iarc_rating_id": "e84b072d-71de-3dae-a0ba-2c8d5b0e0c3e",
+  "display": "fullscreen",
+  "display_override": ["window-controls-overlay", "fullscreen", "standalone", "minimal-ui"],
+  "background_color": "#F8FAFC",
+  "theme_color": "#1E293B",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "scope": "/",
+  "categories": ["sports", "productivity", "business"],
+  "icons": [
+    {
+      "src": "icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Acesso rápido ao dashboard principal",
+      "url": "/"
+    },
+    {
+      "name": "Próximos Jogos",
+      "short_name": "Jogos",
+      "description": "Ver próximos jogos agendados",
+      "url": "/?tab=jogos"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "text/csv": [".csv"],
+        "application/json": [".json"]
+      }
+    }
+  ],
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "background_sync": [
+    {
+      "tag": "sync-data",
+      "icons": [{ "src": "icon-256.png", "sizes": "256x256", "type": "image/png" }]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+timemanager",
+      "url": "/?protocol=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [{
+        "name": "file",
+        "accept": ["image/*", ".csv", ".json"]
+      }]
+    }
+  },
+  "widgets": [
+    {
+      "name": "Dashboard Widget",
+      "short_name": "Dashboard",
+      "description": "Widget do dashboard principal",
+      "tag": "dashboard",
+      "template": "dashboard",
+      "ms_ac_template": "dashboard",
+      "data": "/widget-data",
+      "type": "application/json",
+      "screenshots": [{
+        "src": "widget-screenshot.png",
+        "sizes": "400x300",
+        "label": "Dashboard Widget"
+      }],
+      "icons": [{
+        "src": "icon-256.png",
+        "sizes": "192x192"
+      }],
+      "auth": false,
+      "update": 3600
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=app.netlify.dvfoot.twa",
+      "id": "app.netlify.dvfoot.twa"
+    }
+  ],
+  "scope_extensions": [
+    {
+      "type": "origin",
+      "origin": "https://dvfoot.netlify.app"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard do Time Manager"
+    },
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Time Manager Mobile"
+    }
+  ],
+  "prefer_related_applications": false
+}

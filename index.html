@@ -1,31 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>timme · Gestão de time de futebol amador</title>
-    <meta
-      name="description"
-      content="timme é o app mobile-first para gestão completa de times de futebol amador: jogadores, jogos, presença, finanças e escalação visual."
-    />
-    <meta name="author" content="timme" />
-    <meta name="theme-color" content="#050814" />
-    <link rel="canonical" href="/" />
-
-    <meta property="og:title" content="timme · Gestão de time de futebol amador" />
-    <meta
-      property="og:description"
-      content="Controle jogadores, jogos, presença, eventos, escalação e finanças do seu time amador em um único app."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Time Manager - Gestão de Futebol</title>
+    <meta name="description" content="Sistema completo de gestão para times de futebol com funcionalidades para administradores e jogadores" />
+    <meta name="author" content="Time Manager" />
+    <meta name="keywords" content="futebol, gestão, time, jogadores, administração, esportes, PWA" />
+    <!-- PWA Meta Tags - CRITICAL FOR FULLSCREEN -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1E293B" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Time Manager" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- Android PWA Fullscreen -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Time Manager" />
+    <meta name="msapplication-starturl" content="/" />
+    <meta name="msapplication-navbutton-color" content="#1E293B" />
+    <meta name="msapplication-TileColor" content="#1E293B" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Time Manager - Gestão de Futebol" />
+    <meta property="og:description" content="Sistema completo de gestão para times de futebol" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/placeholder.svg" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1200&h=630&fit=crop" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/placeholder.svg" />
+    <meta name="twitter:title" content="Time Manager - Gestão de Futebol" />
+    <meta name="twitter:description" content="Sistema completo de gestão para times de futebol" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1200&h=630&fit=crop" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      // Em desenvolvimento (localhost/127.0.0.1), desativar SW para não interferir no Vite (HMR/WebSocket)
+      (function () {
+        const isLocalhost = ['localhost', '127.0.0.1'].includes(location.hostname);
+        if ('serviceWorker' in navigator) {
+          if (isLocalhost) {
+            // Unregister todos os SW existentes no dev
+            navigator.serviceWorker.getRegistrations().then((registrations) => {
+              registrations.forEach((reg) => reg.unregister());
+            });
+            // Evitar registro em dev
+            console.info('Service Worker desativado em desenvolvimento.');
+            return;
+          }
+
+          // Produção: registrar SW com retry/timeout
+          async function registerServiceWorker() {
+            const maxRetries = 3;
+            const timeout = 10000; // 10s
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+              try {
+                const registrationPromise = navigator.serviceWorker.register('/sw.js', {
+                  scope: '/',
+                  updateViaCache: 'none'
+                });
+                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout na registração do Service Worker')), timeout));
+                const registration = await Promise.race([registrationPromise, timeoutPromise]);
+                console.log('Service Worker registrado com sucesso:', registration);
+                registration.addEventListener('updatefound', () => {
+                  const newWorker = registration.installing;
+                  newWorker && newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                      console.log('Nova versão disponível, recarregando...');
+                      window.location.reload();
+                    }
+                  });
+                });
+                return registration;
+              } catch (error) {
+                console.error(`Erro na tentativa ${attempt}:`, error);
+                if (attempt === maxRetries) {
+                  console.error('Falha ao registrar Service Worker após todas as tentativas');
+                  return null;
+                }
+                await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+              }
+            }
+          }
+
+          if (document.readyState === 'loading') {
+            window.addEventListener('load', registerServiceWorker);
+          } else {
+            registerServiceWorker();
+          }
+
+          window.addEventListener('online', () => {
+            console.log('Conexão restaurada, tentando registrar Service Worker...');
+            registerServiceWorker();
+          });
+        }
+      })();
+    </script>
   </body>
 </html>

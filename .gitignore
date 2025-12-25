@@ -7,18 +7,51 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+bun.lockb
+
+# Build output
+build/
+dist/
+dist-ssr/
+
+# Coverage
+coverage/
+
+# Environment files
+.env
+.env.*
+
+# Backup files (contain sensitive data)
+backup-config.txt
+backups/
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# System files
+.DS_Store
+Thumbs.db
+
+# APKs
+*.apk
+
+# OS generated files
+*.tmp
+*.temp
+
+# Others
+*.local
+
+# Ignore lockfiles (if using only one package manager, keep only one lockfile)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

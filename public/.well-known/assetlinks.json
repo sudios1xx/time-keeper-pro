@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.netlify.dvfoot.twa",
+      "sha256_cert_fingerprints": [
+        "6A:08:E3:67:29:03:2A:CE:60:DD:41:72:2E:EC:A9:26:39:21:99:08:4A:73:23:91:B7:43:1B:23:FC:85:31:D0"
+      ]
+    }
+  }
+] 

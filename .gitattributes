@@ -1,0 +1,21 @@
+# Imagens (tratamento binário)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
+# Fontes
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# APKs e executáveis
+*.apk binary
+*.exe binary
+*.dll binary
+
+# Arquivos de texto (auto)
+* text=auto eol=lf
