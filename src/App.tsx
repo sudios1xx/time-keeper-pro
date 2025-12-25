@@ -9,6 +9,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { AppLayout } from "./layouts/AppLayout";
 import AdminDashboard from "./pages/admin/Dashboard";
 import PlayerDashboard from "./pages/player/Dashboard";
+import JogadoresPage from "./pages/admin/Jogadores";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/auth" element={<AuthPage />} />
             <Route element={<AppLayout />}>
               <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/jogadores" element={<JogadoresPage />} />
               <Route path="/player" element={<PlayerDashboard />} />
             </Route>
             <Route path="/" element={<AuthPage />} />
