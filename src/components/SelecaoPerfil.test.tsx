@@ -10,8 +10,8 @@ test('renderiza botões de seleção de perfil', () => {
   );
   const btnAdmin = screen.getByRole('button', { name: /administrador/i });
   const btnJogador = screen.getByRole('button', { name: /jogador/i });
-  expect(btnAdmin).toBeInTheDocument();
-  expect(btnJogador).toBeInTheDocument();
+  (expect(btnAdmin) as any).toBeInTheDocument();
+  (expect(btnJogador) as any).toBeInTheDocument();
   fireEvent.click(btnAdmin);
   fireEvent.click(btnJogador);
 }); 

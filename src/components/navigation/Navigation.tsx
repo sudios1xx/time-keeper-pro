@@ -5,19 +5,17 @@ import {
   Users, 
   Calendar, 
   SoccerBall, 
-  Chats, 
   Bell,
   MagnifyingGlass,
   Trophy,
   SignOut,
   User,
-  Envelope,
   PencilSimple,
   Medal,
   CurrencyDollarSimple
 } from 'phosphor-react';
 import { Button } from '../ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '../ui/dialog';
 import { Badge } from '../ui/badge';
 import { Card, CardContent } from '../ui/card';
 import { useAuth } from '../../contexts/AuthContext';
@@ -226,7 +224,7 @@ const Navigation: React.FC = () => {
         {menuItems.map((item) => {
           const IconComponent = item.icon;
           const isActive = isActiveRoute(item.id);
-          const isDisabled = item.disabled;
+          const isDisabled = (item as any).disabled;
           const isAdminHome = usuario?.tipo === 'administrador' && item.id === '/admin';
           
           return (

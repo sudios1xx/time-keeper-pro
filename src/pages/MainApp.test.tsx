@@ -17,5 +17,5 @@ test('renderiza Login quando não autenticado', () => {
     </AuthProvider>
   );
   const button = screen.getByRole('button', { name: /entrar/i });
-  expect(button).toBeInTheDocument();
+  (expect(button) as any).toBeInTheDocument();
 }); 

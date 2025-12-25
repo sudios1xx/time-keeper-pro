@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import { Button } from './ui/button';
 import { Warning, ArrowClockwise, House } from 'phosphor-react';
 import { logger } from '../utils/logger';

@@ -317,9 +317,9 @@ const GestaoEventos: React.FC = () => {
         confirmLabel="Salvar Alterações"
       >
         {eventoEmEdicao && (
-          <EventoForm value={eventoEmEdicao as EventoFormState} onChange={(v) => setEventoEmEdicao(v)} />
+          <EventoForm value={eventoEmEdicao as EventoFormState} onChange={(v) => setEventoEmEdicao(v as unknown as Evento)} />
         )}
-      </ModalFormLayout>
+       </ModalFormLayout>
     </div>
   );
 };
